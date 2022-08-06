@@ -17,8 +17,8 @@ import {
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 
 const HomeScreen = () => {
-  const [rows, setRows] = useState(5);
-  const [cols, setCols] = useState(10);
+  const [rows, setRows] = useState(10);
+  const [cols, setCols] = useState(15);
   const [cwidth, setCWidth] = useState(100 / rows);
   //   const [cwidth, setCWidth] = useState(wp(100) / rows);
   //   const [cheight, setCheight] = useState(wp(141.42) / cols);
@@ -80,7 +80,6 @@ const HomeScreen = () => {
             // height: hp(100),
           }
         }>
-        <Text>HomeScreen</Text>
 
         <View
           style={{
@@ -111,7 +110,7 @@ const HomeScreen = () => {
 
         {/* GRID SHOW VIEW */}
         <ReactNativeZoomableView
-          maxZoom={50}
+          maxZoom={20}
           minZoom={1}
           zoomEnabled={true}
           //   zoomStep={0.5}
@@ -123,6 +122,7 @@ const HomeScreen = () => {
             {
               // padding: 10,
               // backgroundColor: 'red',
+            //   position: 'relative'
             }
           }>
           <View
@@ -137,7 +137,7 @@ const HomeScreen = () => {
               style={{
                 position: 'absolute',
                 top: 0,
-                zIndex: 50,
+                zIndex: 30,
                 width: wp(100),
                 height: wp(5),
                 backgroundColor: 'grey',
@@ -154,7 +154,9 @@ const HomeScreen = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Text>{i + 1}</Text>
+                  <Text style={{
+                    fontSize: wp(3)
+                  }}>C{i + 1}</Text>
                 </View>
               ))}
             </View>
@@ -164,7 +166,7 @@ const HomeScreen = () => {
               style={{
                 position: 'absolute',
                 top: 0,
-                zIndex: 50,
+                zIndex: 30,
                 width: wp(5),
                 height: wp(141.42),
                 backgroundColor: 'grey',
@@ -181,7 +183,9 @@ const HomeScreen = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Text>{i + 1}</Text>
+                  <Text style={{
+                    fontSize: wp(3)
+                  }}>R{i + 1}</Text>
                 </View>
               ))}
             </View>
@@ -229,6 +233,8 @@ const HomeScreen = () => {
                       lmar={lmar}
                       cangle={cangle}
                       cborder={cborder}
+                      coln={c}
+                      rown={r}
                     />
                   </View>
                 )),
@@ -276,6 +282,21 @@ const SingleGrid = props => {
         // overflow: 'hidden',
         borderColor: 'lime',
       }}>
+        <View style={{
+            position: 'absolute',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            // backgroundColor: 'pink',
+            left: 0,
+            right: 0,
+        }}>
+            <Text style={{
+                fontSize: wp(1),
+                textAlign: 'center',
+                textAlignVertical: 'center',
+            }}>C{props.coln} R{props.rown}</Text>
+        </View>
+
       {props.showdia === true ? (
         <View
           style={{
