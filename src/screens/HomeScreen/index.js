@@ -15,7 +15,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
-import { Grayscale, Sepia } from 'react-native-color-matrix-image-filters';
+import {Grayscale, Sepia} from 'react-native-color-matrix-image-filters';
 
 const HomeScreen = () => {
   const [rows, setRows] = useState(10);
@@ -198,28 +198,29 @@ const HomeScreen = () => {
             </View>
 
             {/* IMAGE VIEW */}
-            {/* <Grayscale style={{
+            {/* <Grayscale
+              style={{
+                flex: 1,
+                zIndex: 5,
+              }}> */}
+            {/* <Sepia style={{
                 flex: 1,
                 zIndex: 5,
             }}> */}
-                <Sepia style={{
-                flex: 1,
-                zIndex: 5,
-            }}>
             <Image
               style={{
                 flex: 1,
                 zIndex: 5,
               }}
               source={{
-                uri: 'https://images3.alphacoders.com/105/1054017.jpg',
-                // uri: 'https://i.pinimg.com/originals/b4/59/2f/b4592fd626cbd6953a915732c2f4c52f.jpg',
-                // uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
-                // uri: 'https://funroundup.com/wp-content/uploads/2020/11/Amanda-cerny-bikini-swimsuit.jpg',
-                // uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
+                //   uri: 'https://images3.alphacoders.com/105/1054017.jpg',
+                //   uri: 'https://i.pinimg.com/originals/b4/59/2f/b4592fd626cbd6953a915732c2f4c52f.jpg',
+                uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
+                //   uri: 'https://funroundup.com/wp-content/uploads/2020/11/Amanda-cerny-bikini-swimsuit.jpg',
+                //   uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
               }}
             />
-            </Sepia>
+            {/* </Sepia> */}
             {/* </Grayscale> */}
 
             {/* GRIDS */}
@@ -306,20 +307,21 @@ const SingleGrid = props => {
         <View
           style={{
             position: 'absolute',
-            // justifyContent: 'center',
-            // alignItems: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
             // backgroundColor: 'pink',
-            left: 0,
-            right: 0,
+            flex: 1,
           }}>
           <Text
             style={{
-              fontSize: wp(1),
+              fontSize: wp(0.7),
+              backgroundColor: 'white',
               textAlign: 'center',
               textAlignVertical: 'center',
-            //   color: 'white',
+              //   color: 'white',
+              opacity: 0.7,
             }}>
-            C{props.coln} R{props.rown}
+            C{props.coln + 1} R{props.rown + 1}
           </Text>
         </View>
       ) : (
