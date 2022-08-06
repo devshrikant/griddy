@@ -181,7 +181,9 @@ const SingleGrid = props => {
       style={{
         width: wp(props.cwidth),
         height: wp(props.cheight),
-        borderWidth: props.cborder,
+        // borderWidth: props.cborder,
+        borderLeftWidth: props.cborder,
+        borderTopWidth: props.cborder,
         // backgroundColor: 'yellow',
         justifyContent: 'center',
         // alignItems: 'center',
