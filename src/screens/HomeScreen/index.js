@@ -13,17 +13,16 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 
 const HomeScreen = () => {
-  const [rows, setRows] = useState(10);
-  const [cols, setCols] = useState(15);
+  const [rows, setRows] = useState(14);
+  const [cols, setCols] = useState(20);
   const [cwidth, setCWidth] = useState(100 / rows);
   //   const [cwidth, setCWidth] = useState(wp(100) / rows);
   //   const [cheight, setCheight] = useState(wp(141.42) / cols);
   const [cheight, setCheight] = useState(141.42 / cols);
-  const [cborder, setCborder] = useState(1);
+  const [cborder, setCborder] = useState(0.5);
   const [cangle, setCangle] = useState(
     (Math.atan(cwidth / cheight) * 180) / Math.PI,
   );
@@ -73,6 +72,7 @@ const HomeScreen = () => {
         // backgroundColor: 'pink'
       }}>
       <ScrollView
+      scrollEnabled={false}
         contentContainerStyle={
           {
             // flex: 1,
@@ -110,66 +110,66 @@ const HomeScreen = () => {
         </View>
 
         {/* GRID SHOW VIEW */}
-        <View
+        <ReactNativeZoomableView
+          maxZoom={100}
+          minZoom={1}
+        //   zoomStep={0.5}
+          initialZoom={1}
+          movementSensibility={1}
+        //   bindToBorders={true}
+        //   onZoomAfter={this.logOutZoomState}
           style={{
-            width: wp(100),
-            height: wp(141.42),
-            //   backgroundColor: 'red',
-            position: 'relative',
+            // padding: 10,
+            backgroundColor: 'red',
           }}>
-          {/* IMAGE VIEW */}
-          <Image
-            style={{
-              flex: 1,
-              zIndex: 5,
-            }}
-            source={{
-              uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
-            }}
-          />
-
           <View
             style={{
               width: wp(100),
               height: wp(141.42),
-              // height: '100%',
-              position: 'absolute',
-            //   backgroundColor: 'pink',
-              zIndex: 10,
-              top: 0,
-              flexWrap: 'wrap',
-              flexDirection: 'row',
+              //   backgroundColor: 'red',
+              position: 'relative',
+            }}>
+            {/* IMAGE VIEW */}
+            <Image
+              style={{
+                flex: 1,
+                zIndex: 5,
+              }}
+              source={{
+                // uri: 'https://avatars.githubusercontent.com/u/22591983?v=4'
+                uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
+              }}
+            />
+
+            <View
+              style={{
+                width: wp(100),
+                height: wp(141.42),
+                // height: '100%',
+                position: 'absolute',
+                //   backgroundColor: 'pink',
+                zIndex: 10,
+                top: 0,
+                flexWrap: 'wrap',
+                flexDirection: 'row',
                 // opacity: 0.5,
                 // opacity: 0,
-            }}>
-            {Array(rows * cols).fill(
-              <SingleGrid
-                cwidth={cwidth}
-                cheight={cheight}
-                cdia={cdia}
-                lmar={lmar}
-                cangle={cangle}
-                cborder={cborder}
-              />,
-            )}
-            {/*             
-          {Array(cols).fill(
-            Array(rows).fill(<SingleGrid cwidth={cwidth} cheight={cheight} />),
-          )} */}
+              }}>
+              {Array(rows * cols).fill(
+                <SingleGrid
+                  cwidth={cwidth}
+                  cheight={cheight}
+                  cdia={cdia}
+                  lmar={lmar}
+                  cangle={cangle}
+                  cborder={cborder}
+                />,
+              )}
 
-            {/* <SingleGrid cwidth={cwidth} /> */}
+            </View>
           </View>
-        </View>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
-        <Text>HomeScreen</Text>
+        </ReactNativeZoomableView>
+
       </ScrollView>
     </View>
   );
@@ -181,15 +181,15 @@ const SingleGrid = props => {
       style={{
         width: wp(props.cwidth),
         height: wp(props.cheight),
-        // borderWidth: props.cborder,
-        borderLeftWidth: props.cborder,
-        borderTopWidth: props.cborder,
+        borderWidth: props.cborder/2,
+        // borderLeftWidth: props.cborder,
+        // borderTopWidth: props.cborder,
         // backgroundColor: 'yellow',
         justifyContent: 'center',
         // alignItems: 'center',
         position: 'relative',
         // overflow: 'hidden',
-        borderColor: 'lime'
+        borderColor: 'lime',
       }}>
       <View
         style={{
@@ -197,7 +197,7 @@ const SingleGrid = props => {
           // borderWidth: 1,
           marginLeft: wp(-props.lmar),
           transform: [{rotateZ: `${90 - props.cangle}deg`}],
-          width: wp(props.cdia) - props.cborder*2,
+          width: wp(props.cdia) - props.cborder * 2,
           backgroundColor: 'red',
           position: 'absolute',
         }}
@@ -208,7 +208,7 @@ const SingleGrid = props => {
           // borderWidth: 1,
           marginLeft: wp(-props.lmar),
           transform: [{rotateZ: `-${90 - props.cangle}deg`}],
-          width: wp(props.cdia) - props.cborder*2,
+          width: wp(props.cdia) - props.cborder * 2,
           backgroundColor: 'red',
           position: 'absolute',
         }}
