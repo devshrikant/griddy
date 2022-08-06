@@ -15,6 +15,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
+import { Grayscale, Sepia } from 'react-native-color-matrix-image-filters';
 
 const HomeScreen = () => {
   const [rows, setRows] = useState(10);
@@ -34,6 +35,7 @@ const HomeScreen = () => {
 
   const [lmar, setLmar] = useState((cdia - cwidth) / 2);
   const [showdia, setShowdia] = useState(true);
+  const [showcor, setShowcor] = useState(true);
 
   useEffect(() => {
     // console.log(cwidth, cheight, cdia);
@@ -59,7 +61,7 @@ const HomeScreen = () => {
   };
 
   const handleCellPress = (c, r) => {
-    ToastAndroid.show(`Row ${r+1} Column ${c+1}`, ToastAndroid.SHORT);
+    ToastAndroid.show(`Row ${r + 1} Column ${c + 1}`, ToastAndroid.SHORT);
     console.log(c + 1, r + 1);
   };
 
@@ -80,7 +82,6 @@ const HomeScreen = () => {
             // height: hp(100),
           }
         }>
-
         <View
           style={{
             marginVertical: wp(10),
@@ -122,7 +123,7 @@ const HomeScreen = () => {
             {
               // padding: 10,
               // backgroundColor: 'red',
-            //   position: 'relative'
+              //   position: 'relative'
             }
           }>
           <View
@@ -147,16 +148,19 @@ const HomeScreen = () => {
               }}>
               {[...Array(rows)].map((v, i) => (
                 <View
-                key={i}
+                  key={i}
                   // opacity={0.9}
                   style={{
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Text style={{
-                    fontSize: wp(3)
-                  }}>C{i + 1}</Text>
+                  <Text
+                    style={{
+                      fontSize: wp(2.5),
+                    }}>
+                    C{i + 1}
+                  </Text>
                 </View>
               ))}
             </View>
@@ -176,32 +180,47 @@ const HomeScreen = () => {
               }}>
               {[...Array(cols)].map((v, i) => (
                 <View
-                key={i}
+                  key={i}
                   // opacity={0.9}
                   style={{
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Text style={{
-                    fontSize: wp(3)
-                  }}>R{i + 1}</Text>
+                  <Text
+                    style={{
+                      fontSize: wp(2.5),
+                    }}>
+                    R{i + 1}
+                  </Text>
                 </View>
               ))}
             </View>
 
             {/* IMAGE VIEW */}
+            {/* <Grayscale style={{
+                flex: 1,
+                zIndex: 5,
+            }}> */}
+                <Sepia style={{
+                flex: 1,
+                zIndex: 5,
+            }}>
             <Image
               style={{
                 flex: 1,
                 zIndex: 5,
               }}
               source={{
-                uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
+                uri: 'https://images3.alphacoders.com/105/1054017.jpg',
+                // uri: 'https://i.pinimg.com/originals/b4/59/2f/b4592fd626cbd6953a915732c2f4c52f.jpg',
+                // uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
                 // uri: 'https://funroundup.com/wp-content/uploads/2020/11/Amanda-cerny-bikini-swimsuit.jpg',
                 // uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
               }}
             />
+            </Sepia>
+            {/* </Grayscale> */}
 
             {/* GRIDS */}
             <View
@@ -223,10 +242,10 @@ const HomeScreen = () => {
                   <View
                     key={`${c}_${r}`}
                     // onPress={() => handleCellPress(c, r)}
-                    >
+                  >
                     <SingleGrid
                       showdia={showdia}
-                    //   key={`${c}_${r}`}
+                      //   key={`${c}_${r}`}
                       cwidth={cwidth}
                       cheight={cheight}
                       cdia={cdia}
@@ -235,6 +254,7 @@ const HomeScreen = () => {
                       cborder={cborder}
                       coln={c}
                       rown={r}
+                      showcor={showcor}
                     />
                   </View>
                 )),
@@ -282,20 +302,29 @@ const SingleGrid = props => {
         // overflow: 'hidden',
         borderColor: 'lime',
       }}>
-        <View style={{
+      {props.showcor === true ? (
+        <View
+          style={{
             position: 'absolute',
             // justifyContent: 'center',
             // alignItems: 'center',
             // backgroundColor: 'pink',
             left: 0,
             right: 0,
-        }}>
-            <Text style={{
-                fontSize: wp(1),
-                textAlign: 'center',
-                textAlignVertical: 'center',
-            }}>C{props.coln} R{props.rown}</Text>
+          }}>
+          <Text
+            style={{
+              fontSize: wp(1),
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            //   color: 'white',
+            }}>
+            C{props.coln} R{props.rown}
+          </Text>
         </View>
+      ) : (
+        <></>
+      )}
 
       {props.showdia === true ? (
         <View

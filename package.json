@@ -13,6 +13,7 @@
     "@openspacelabs/react-native-zoomable-view": "^2.0.4",
     "react": "18.0.0",
     "react-native": "0.69.3",
+    "react-native-color-matrix-image-filters": "^5.2.14",
     "react-native-responsive-screen": "^1.4.2"
   },
   "devDependencies": {
