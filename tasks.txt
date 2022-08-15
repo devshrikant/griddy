@@ -1,5 +1,5 @@
 1. Router
-2. Theme
+2. Multi Theme
 3. UI Controls
     a. Width for border
     b. Width for diagonals
@@ -7,13 +7,19 @@
     d. Color for diagonals
     e. Switches for all
     f. Labels
-4. The Scales top & left***
-5. Filters
+    g. Labels Color
+4. The Scales top & left*** [DISCARDED]
+
+5. Filters 
 6. Image Picker
     a. In which format? A4 or Custom or Full etc
     b. Type of cell setting (Optional)
+
 7. Compare image (Optional)
+
 8. Radial Grid
 9. Lock Feature
 10. Orientation (Optional)
+
 11. Feedback + Rate Us + About Us + Terms
+12. Multi Language

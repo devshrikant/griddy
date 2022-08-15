@@ -213,10 +213,11 @@ const HomeScreen = () => {
                 zIndex: 5,
               }}
               source={{
-                uri: 'https://daman.co.id/daman.co.id/wp-content/uploads/2019/10/Robert-Downey-Jr-Glasses-1.jpg',
+                // uri: 'https://daman.co.id/daman.co.id/wp-content/uploads/2019/10/Robert-Downey-Jr-Glasses-1.jpg',
                 //   uri: 'https://images3.alphacoders.com/105/1054017.jpg',
                 //   uri: 'https://i.pinimg.com/originals/b4/59/2f/b4592fd626cbd6953a915732c2f4c52f.jpg',
-                //   uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
+
+                uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
                 //   uri: 'https://funroundup.com/wp-content/uploads/2020/11/Amanda-cerny-bikini-swimsuit.jpg',
                 //   uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
               }}
