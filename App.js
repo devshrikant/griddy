@@ -7,9 +7,9 @@ import TestScreen from './src/screens/TestScreen'
 const App = () => {
   return (
     <>
-      {/* <HomeScreen /> */}
+      <HomeScreen />
       {/* <SettingScreen /> */}
-      <TestScreen />
+      {/* <TestScreen /> */}
     </>
   )
 }
