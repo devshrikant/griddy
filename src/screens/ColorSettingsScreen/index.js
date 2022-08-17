@@ -42,13 +42,17 @@ import {
   Button,
   Card,
   Title,
-  Paragraph,
+  Switch,
 } from 'react-native-paper';
 
 // const LeftContent = ;
 // const LeftContent2 =;
 
 const ColorSettingsScreen = () => {
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+
+
+
   const [rows, setRows] = useState(10);
   const [cols, setCols] = useState(15);
   const [cwidth, setCWidth] = useState(100 / rows);
@@ -96,6 +100,8 @@ const ColorSettingsScreen = () => {
     console.log(c + 1, r + 1);
   };
 
+  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
   return (
     <>
       <Appbar.Header mode="small">
@@ -123,34 +129,75 @@ const ColorSettingsScreen = () => {
                 marginTop: wp(1.5),
                 marginLeft: wp(5),
               }}>
-              Start Project
+              Grid Settings
             </Title>
             <View
               style={{
                 flex: 1,
-                marginTop: wp(5),
-                elevation: 0,
+                marginTop: wp(0),
               }}>
               <Card.Title
-                title="Local Upload"
-                subtitle="Draw using images from Gallery & Google Photos"
+                title="Show Grids"
+                // subtitle="Draw using images from Gallery & Google Photos"
                 subtitleNumberOfLines={2}
                 left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+                right={props => <View style={{
+                  marginRight: wp(5)
+                }}><Switch value={isSwitchOn} onValueChange={onToggleSwitch} /></View>}
               />
             </View>
 
             <View
               style={{
                 flex: 1,
-                marginTop: wp(5),
-                elevation: 0,
+                marginTop: wp(0),
               }}>
               <Card.Title
-                title="Open Camera"
-                subtitle="Card Subtitle"
-                left={props => <Avatar.Icon {...props} icon="camera" />}
+                title="Show Diagonals"
+                // subtitle="Draw using images from Gallery & Google Photos"
+                subtitleNumberOfLines={2}
+                left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+                right={props => <View style={{
+                  marginRight: wp(5)
+                }}><Switch value={isSwitchOn} onValueChange={onToggleSwitch} /></View>}
               />
             </View>
+
+            <View
+              style={{
+                flex: 1,
+                marginTop: wp(0),
+              }}>
+              <Card.Title
+                title="Show Radial Grid"
+                // subtitle="Draw using images from Gallery & Google Photos"
+                subtitleNumberOfLines={2}
+                left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+                right={props => <View style={{
+                  marginRight: wp(5)
+                }}><Switch value={isSwitchOn} onValueChange={onToggleSwitch} /></View>}
+              />
+            </View>
+
+
+            
+            <View
+              style={{
+                flex: 1,
+                marginTop: wp(0),
+              }}>
+              <Card.Title
+                title="Show Row/Col Labels"
+                // subtitle="Draw using images from Gallery & Google Photos"
+                subtitleNumberOfLines={2}
+                left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+                right={props => <View style={{
+                  marginRight: wp(5)
+                }}><Switch value={isSwitchOn} onValueChange={onToggleSwitch} /></View>}
+              />
+            </View>
+
+            
           </View>
 
           <Title
