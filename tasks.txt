@@ -24,3 +24,4 @@
 11. Feedback + Rate Us + About Us + Terms
 12. Multi Language
 13. Rotate Image
+14. Blogs Content

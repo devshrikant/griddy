@@ -16,7 +16,8 @@ import {
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 import {Grayscale, Sepia} from 'react-native-color-matrix-image-filters';
-import {Appbar, Button} from 'react-native-paper';
+import {Appbar, FAB} from 'react-native-paper';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const GridScreen = () => {
   const [rows, setRows] = useState(10);
@@ -68,15 +69,308 @@ const GridScreen = () => {
 
   return (
     <>
-      <Appbar.Header mode='small'>
+      <Appbar.Header mode="small">
         <Appbar.BackAction onPress={() => {}} />
         <Appbar.Content title="Grid" />
-        <Appbar.Action icon="calendar" onPress={() => {}} />
-        <Appbar.Action icon="magnify" onPress={() => {}} />
+        <Appbar.Action icon="grid" onPress={() => {}} />
+        {/* <Appbar.Action icon="grid-off" onPress={() => {}} /> */}
+        <Appbar.Action
+          icon={props => <Entypo name="circle-with-cross" {...props} />}
+          onPress={() => {}}
+        />
+        {/* <Appbar.Action
+          icon={props => <Entypo name="cross" {...props} />}
+          onPress={() => {}}
+        /> */}
+
+        <Appbar.Action icon="radioactive" onPress={() => {}} />
+
+        {/* <Appbar.Action icon="radioactive-off" onPress={() => {}} /> */}
+
+        <Appbar.Action icon="lock" onPress={() => {}} />
+
+        {/* <Appbar.Action icon="lock-open-variant" onPress={() => {}} /> */}
       </Appbar.Header>
 
+      <FAB
+        // icon="lock-reset"
+        icon="history"
+        size="small"
+        style={styles.fab}
+        onPress={() => console.log('Pressed Reset')}
+      />
+
+      <ScrollView
+        scrollEnabled={false}
+        contentContainerStyle={{
+          flex: 1,
+          // backgroundColor: 'pink',
+          // width: wp(100),
+          // height: hp(100),
+        }}>
+        {/* GRID SHOW VIEW */}
+        <ReactNativeZoomableView
+          maxZoom={20}
+          minZoom={1}
+          zoomEnabled={true}
+          //   zoomStep={0.5}
+          initialZoom={1}
+          movementSensibility={1}
+          //   bindToBorders={true}
+          //   onZoomAfter={this.logOutZoomState}
+          style={
+            {
+              // padding: 10,
+              // backgroundColor: 'red',
+              //   position: 'relative'
+            }
+          }>
+          <View
+            style={{
+              width: wp(100),
+              height: wp(141.42),
+              //   backgroundColor: 'red',
+              position: 'relative',
+            }}>
+            {/* TOP INDEX */}
+            <View
+              style={{
+                position: 'absolute',
+                top: 0,
+                zIndex: 30,
+                width: wp(100),
+                height: wp(5),
+                backgroundColor: 'grey',
+                opacity: 0.4,
+                flexDirection: 'row',
+                // justifyContent: 'space-around',
+              }}>
+              {[...Array(rows)].map((v, i) => (
+                <View
+                  key={i}
+                  // opacity={0.9}
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: wp(2.5),
+                    }}>
+                    C{i + 1}
+                  </Text>
+                </View>
+              ))}
+            </View>
+
+            {/* LEFT INDEX */}
+            <View
+              style={{
+                position: 'absolute',
+                top: 0,
+                zIndex: 30,
+                width: wp(5),
+                height: wp(141.42),
+                backgroundColor: 'grey',
+                opacity: 0.4,
+                flexDirection: 'column',
+                // justifyContent: 'space-around',
+              }}>
+              {[...Array(cols)].map((v, i) => (
+                <View
+                  key={i}
+                  // opacity={0.9}
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: wp(2.5),
+                    }}>
+                    R{i + 1}
+                  </Text>
+                </View>
+              ))}
+            </View>
+
+            {/* IMAGE VIEW */}
+            {/* <Grayscale
+              style={{
+                flex: 1,
+                zIndex: 5,
+              }}> */}
+            {/* <Sepia style={{
+                flex: 1,
+                zIndex: 5,
+            }}> */}
+            <Image
+              resizeMode="contain"
+              style={{
+                flex: 1,
+                zIndex: 5,
+              }}
+              source={{
+                // uri: 'https://daman.co.id/daman.co.id/wp-content/uploads/2019/10/Robert-Downey-Jr-Glasses-1.jpg',
+                //   uri: 'https://images3.alphacoders.com/105/1054017.jpg',
+                //   uri: 'https://i.pinimg.com/originals/b4/59/2f/b4592fd626cbd6953a915732c2f4c52f.jpg',
+                uri: 'https://images.mubicdn.net/images/cast_member/548545/cache-421034-1553070044/image-w856.jpg?size=800x',
+                //   uri: 'https://funroundup.com/wp-content/uploads/2020/11/Amanda-cerny-bikini-swimsuit.jpg',
+                //   uri: 'https://i.pinimg.com/736x/80/57/39/8057394c0229fb19ba991e01925d96b8.jpg',
+              }}
+            />
+            {/* </Sepia> */}
+            {/* </Grayscale> */}
+
+            {/* GRIDS */}
+            <View
+              style={{
+                width: wp(100),
+                height: wp(141.42),
+                // height: '100%',
+                position: 'absolute',
+                //   backgroundColor: 'pink',
+                zIndex: 10,
+                top: 0,
+                flexWrap: 'wrap',
+                flexDirection: 'row',
+                // opacity: 0.5,
+                // opacity: 0,
+              }}>
+              {[...Array(cols)].map((val, r) =>
+                [...Array(rows)].map((val, c) => (
+                  <View
+                    key={`${c}_${r}`}
+                    // onPress={() => handleCellPress(c, r)}
+                  >
+                    <SingleGrid
+                      showdia={showdia}
+                      //   key={`${c}_${r}`}
+                      cwidth={cwidth}
+                      cheight={cheight}
+                      cdia={cdia}
+                      lmar={lmar}
+                      cangle={cangle}
+                      cborder={cborder}
+                      coln={c}
+                      rown={r}
+                      showcor={showcor}
+                    />
+                  </View>
+                )),
+              )}
+
+              {/* {[...Array(cols * rows)].map(
+                (v, i) => (
+                  console.log('indexx', i + 1, ((cols * rows) % (i))),
+                  (
+                    <SingleGrid
+                      showdia={showdia}
+                      key={i}
+                      cwidth={cwidth}
+                      cheight={cheight}
+                      cdia={cdia}
+                      lmar={lmar}
+                      cangle={cangle}
+                      cborder={cborder}
+                    />
+                  )
+                ),
+              )} */}
+            </View>
+          </View>
+        </ReactNativeZoomableView>
+      </ScrollView>
     </>
   );
 };
+
+const SingleGrid = props => {
+  // console.log(props);
+  return (
+    <View
+      style={{
+        width: wp(props.cwidth),
+        height: wp(props.cheight),
+        borderWidth: props.cborder / 2,
+        // borderLeftWidth: props.cborder,
+        // borderTopWidth: props.cborder,
+        // backgroundColor: 'yellow',
+        justifyContent: 'center',
+        // alignItems: 'center',
+        position: 'relative',
+        // overflow: 'hidden',
+        borderColor: 'lime',
+      }}>
+      {props.showcor === true ? (
+        <View
+          style={{
+            position: 'absolute',
+            justifyContent: 'center',
+            alignItems: 'center',
+            // backgroundColor: 'pink',
+            flex: 1,
+          }}>
+          <Text
+            style={{
+              fontSize: wp(0.7),
+              backgroundColor: 'white',
+              textAlign: 'center',
+              textAlignVertical: 'center',
+              //   color: 'white',
+              opacity: 0.7,
+            }}>
+            C{props.coln + 1} R{props.rown + 1}
+          </Text>
+        </View>
+      ) : (
+        <></>
+      )}
+
+      {props.showdia === true ? (
+        <View
+          style={{
+            height: props.cborder,
+            // borderWidth: 1,
+            marginLeft: wp(-props.lmar),
+            transform: [{rotateZ: `${90 - props.cangle}deg`}],
+            width: wp(props.cdia) - props.cborder * 2,
+            backgroundColor: 'red',
+            position: 'absolute',
+          }}
+        />
+      ) : (
+        <></>
+      )}
+      {props.showdia === true ? (
+        <View
+          style={{
+            height: props.cborder,
+            // borderWidth: 1,
+            marginLeft: wp(-props.lmar),
+            transform: [{rotateZ: `-${90 - props.cangle}deg`}],
+            width: wp(props.cdia) - props.cborder * 2,
+            backgroundColor: 'red',
+            position: 'absolute',
+          }}
+        />
+      ) : (
+        <></>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    zIndex: 99,
+  },
+});
 
 export default GridScreen;

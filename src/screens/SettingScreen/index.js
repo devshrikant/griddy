@@ -12,6 +12,14 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import {
+  Appbar,
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+} from 'react-native-paper';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -42,6 +50,14 @@ const SettingScreen = () => {
   }, []);
 
   return (
+    <>
+     <Appbar.Header mode="small">
+        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Content title="Settings" />
+        <Appbar.Action icon="calendar" onPress={() => {}} />
+        <Appbar.Action icon="magnify" onPress={() => {}} />
+      </Appbar.Header>
+    
     <View
       style={{
         // flex: 1,
@@ -59,6 +75,7 @@ const SettingScreen = () => {
         backgroundColor: 'pink',
         position: 'relative',
       }}>
+       
         <View style={{
           height: 2,
           // borderWidth: 1,
@@ -71,6 +88,7 @@ const SettingScreen = () => {
         }} />
       </View>
     </View>
+    </>
   );
 };
 

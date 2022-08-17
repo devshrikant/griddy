@@ -114,7 +114,7 @@ const ImageSettingsScreen = () => {
                 title="Local Upload"
                 subtitle="Draw using images from Gallery & Google Photos"
                 subtitleNumberOfLines={2}
-                left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+                left={props => <Avatar.Icon {...props} icon="file-image-plus" />}
               />
             </View>
 
@@ -126,8 +126,8 @@ const ImageSettingsScreen = () => {
               }}>
               <Card.Title
                 title="Open Camera"
-                subtitle="Card Subtitle"
-                left={props => <Avatar.Icon {...props} icon="camera" />}
+                subtitle="Click pictures via camera and draw them!"
+                left={props => <Avatar.Icon {...props} icon="camera-iris" />}
               />
             </View>
           </View>
