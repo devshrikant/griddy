@@ -16,7 +16,7 @@ import {
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 import {Grayscale, Sepia} from 'react-native-color-matrix-image-filters';
-import { Button } from 'react-native-paper'
+import {Appbar, Button} from 'react-native-paper';
 
 const GridScreen = () => {
   const [rows, setRows] = useState(10);
@@ -67,18 +67,15 @@ const GridScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        // flex: 1,
-        width: wp(100),
-        height: hp(100),
-        // backgroundColor: 'pink'
-      }}>
-              <Text>GridScreen Settings</Text>
-              <Button icon="camera">
-  Press me
-</Button>
-    </View>
+    <>
+      <Appbar.Header mode='small'>
+        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Content title="Grid" />
+        <Appbar.Action icon="calendar" onPress={() => {}} />
+        <Appbar.Action icon="magnify" onPress={() => {}} />
+      </Appbar.Header>
+
+    </>
   );
 };
 

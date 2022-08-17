@@ -16,6 +16,17 @@ import {
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 import {Grayscale, Sepia} from 'react-native-color-matrix-image-filters';
+import {
+  Appbar,
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+} from 'react-native-paper';
+
+// const LeftContent = ;
+// const LeftContent2 =;
 
 const ImageSettingsScreen = () => {
   const [rows, setRows] = useState(10);
@@ -66,16 +77,100 @@ const ImageSettingsScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        // flex: 1,
-        width: wp(100),
-        height: hp(100),
-        // backgroundColor: 'pink'
-      }}>
-        <Text>Image Settings</Text>
-    </View>
+    <>
+      <Appbar.Header mode="small">
+        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Content title="Photo Setup" />
+        <Appbar.Action icon="calendar" onPress={() => {}} />
+        <Appbar.Action icon="magnify" onPress={() => {}} />
+      </Appbar.Header>
+      <View
+        style={{
+          // backgroundColor: 'pink',
+          width: wp(100),
+          height: hp(80),
+        }}>
+        <ScrollView contentContainerStyle={{
+          paddingBottom: wp(5)
+        }}>
+          <View
+            style={{
+              flexDirection: 'column',
+            }}>
+            <Title
+              style={{
+                marginTop: wp(1.5),
+                marginLeft: wp(5),
+              }}>
+              Start Project
+            </Title>
+            <View
+              style={{
+                flex: 1,
+                marginTop: wp(5),
+                elevation: 0,
+              }}>
+              <Card.Title
+                title="Local Upload"
+                subtitle="Draw using images from Gallery & Google Photos"
+                subtitleNumberOfLines={2}
+                left={props => <Avatar.Icon {...props} icon="image-multiple" />}
+              />
+            </View>
+
+            <View
+              style={{
+                flex: 1,
+                marginTop: wp(5),
+                elevation: 0,
+              }}>
+              <Card.Title
+                title="Open Camera"
+                subtitle="Card Subtitle"
+                left={props => <Avatar.Icon {...props} icon="camera" />}
+              />
+            </View>
+          </View>
+
+          <Title
+            style={{
+              marginTop: wp(5),
+              marginLeft: wp(5),
+            }}>
+            Recent Projects
+          </Title>
+
+          <View style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+          }}>
+            <ImagePreview />
+            <ImagePreview />
+            <ImagePreview />
+            <ImagePreview />
+
+          </View>
+        </ScrollView>
+      </View>
+    </>
   );
 };
+
+const ImagePreview = () => {
+  return (
+    <Card style={{
+      width: wp(42.5),
+      height: wp(42.5),
+      marginLeft: wp(5),
+      marginTop: wp(5),
+      backgroundColor: 'white',
+      overflow: 'hidden',
+    }}>
+      <Image style={{
+        flex: 1,
+      }} source={{ uri: 'https://img5.goodfon.com/wallpaper/nbig/e/76/amanda-cerny-devushka-kosy-maika-vzgliad.jpg' }} />
+    </Card>
+  )
+}
 
 export default ImageSettingsScreen;

@@ -16,6 +16,7 @@ import {
 
 import ReactNativeZoomableView from '@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView';
 import {Grayscale, Sepia} from 'react-native-color-matrix-image-filters';
+import {Appbar, Button} from 'react-native-paper';
 
 const ColorSettingsScreen = () => {
   const [rows, setRows] = useState(10);
@@ -66,16 +67,57 @@ const ColorSettingsScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        // flex: 1,
+    <>
+      <Appbar.Header mode="small">
+        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Content title="Color Settings" />
+        <Appbar.Action icon="calendar" onPress={() => {}} />
+        <Appbar.Action icon="magnify" onPress={() => {}} />
+      </Appbar.Header>
+      <View style={{
+        backgroundColor: 'pink',
         width: wp(100),
-        height: hp(100),
-        // backgroundColor: 'pink'
+        height: hp(80),
       }}>
-              <Text>Color Settings</Text>
+      <ScrollView contentContainerStyle={{
+        
+      }}>
+        <Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw</Text>
 
-    </View>
+<Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw</Text>
+
+
+<Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw</Text>
+
+
+<Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw</Text>
+
+
+<Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw 2</Text>
+
+        
+<Text style={{
+          fontSize: wp(10),
+          marginVertical: wp(10),
+        }}>dklajdw 4</Text>
+      </ScrollView>
+      </View>
+    </>
   );
 };
 

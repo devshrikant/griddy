@@ -15,7 +15,7 @@ const AlbumsRoute = () => <Text>Albums</Text>;
 const RecentsRoute = () => <Text>Recents</Text>;
 
 const Router = () => {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(2);
   const [routes] = React.useState([
     {
       key: 'grid',
@@ -24,7 +24,7 @@ const Router = () => {
       unfocusedIcon: 'view-grid-outline',
     },
     {key: 'color', title: 'Color', focusedIcon: 'format-paint'},
-    {key: 'recents', title: 'Recent', focusedIcon: 'history'},
+    {key: 'recents', title: 'Photos', focusedIcon: 'history'},
     {
       key: 'setting',
       title: 'Settings',
