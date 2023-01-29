@@ -8,7 +8,7 @@ import {
   StyleSheet,
   ToastAndroid,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, createRef} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -38,6 +38,8 @@ const GridScreen = () => {
   const [lmar, setLmar] = useState((cdia - cwidth) / 2);
   const [showdia, setShowdia] = useState(true);
   const [showcor, setShowcor] = useState(true);
+
+  const zoomableViewRef = createRef();
 
   useEffect(() => {
     // console.log(cwidth, cheight, cdia);
@@ -97,7 +99,8 @@ const GridScreen = () => {
         icon="history"
         size="small"
         style={styles.fab}
-        onPress={() => console.log('Pressed Reset')}
+        // onPress={() => console.log('Pressed Reset')}
+        onPress={() => zoomableViewRef.current.zoomTo(1)}
       />
 
       <ScrollView
@@ -116,6 +119,7 @@ const GridScreen = () => {
           //   zoomStep={0.5}
           initialZoom={1}
           movementSensibility={1}
+          ref={zoomableViewRef}
           //   bindToBorders={true}
           //   onZoomAfter={this.logOutZoomState}
           style={
